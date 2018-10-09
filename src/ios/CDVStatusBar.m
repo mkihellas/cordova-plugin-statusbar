@@ -421,6 +421,16 @@ static const void *kStatusBarStyle = &kStatusBarStyle;
     _statusBarBackgroundView.frame = sbBgFrame;
 }
 
+-(bool)isIphoneX {
+    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
+        if ((int)[[UIScreen mainScreen] nativeBounds].size.height==1792 || 
+           (int)[[UIScreen mainScreen] nativeBounds].size.height==2436 || 
+           (int)[[UIScreen mainScreen] nativeBounds].size.height==2688) {
+            return true;
+        }
+    }
+}
+
 -(void)resizeWebView
 {
     BOOL isIOS11 = (IsAtLeastiOSVersion(@"11.0"));
@@ -428,6 +438,10 @@ static const void *kStatusBarStyle = &kStatusBarStyle;
     CGRect bounds = [self.viewController.view.window bounds];
     if (CGRectEqualToRect(bounds, CGRectZero)) {
         bounds = [[UIScreen mainScreen] bounds];
+    }
+     
+    if ([self isIphoneX]) {
+        bounds.size.height += self.webView.safeAreaInsets.bottom; 
     }
 
     self.viewController.view.frame = bounds;
