@@ -439,6 +439,10 @@ static const void *kStatusBarStyle = &kStatusBarStyle;
     if (CGRectEqualToRect(bounds, CGRectZero)) {
         bounds = [[UIScreen mainScreen] bounds];
     }
+ 
+     if ([self isIphoneX]) {
+        bounds.size.height += self.webView.safeAreaInsets.bottom; 
+    }
 
     self.viewController.view.frame = bounds;
 
@@ -467,9 +471,7 @@ static const void *kStatusBarStyle = &kStatusBarStyle;
         }
     }
  
-    if ([self isIphoneX]) {
-        frame.size.height += self.webView.safeAreaInsets.bottom; 
-    }
+
     frame.size.height -= frame.origin.y;
     self.webView.frame = frame;
     
