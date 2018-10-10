@@ -440,11 +440,13 @@ static const void *kStatusBarStyle = &kStatusBarStyle;
         bounds = [[UIScreen mainScreen] bounds];
     }
  
-     if ([self isIphoneX]) {
-        bounds.size.height += self.webView.safeAreaInsets.bottom; 
-    }
+
 
     self.viewController.view.frame = bounds;
+ 
+      if ([self isIphoneX]) {
+        bounds.size.height += self.webView.safeAreaInsets.bottom; 
+    }
 
     self.webView.frame = bounds;
 
