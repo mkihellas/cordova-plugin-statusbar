@@ -472,7 +472,7 @@ static const void *kStatusBarStyle = &kStatusBarStyle;
     }
  
     if ([self isIphoneX]) {
-        //frame.size.height += self.webView.safeAreaInsets.bottom; 
+        frame.size.height += self.webView.safeAreaInsets.bottom; 
     }
 
     frame.size.height -= frame.origin.y;
