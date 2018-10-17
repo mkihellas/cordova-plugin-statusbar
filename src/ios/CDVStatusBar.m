@@ -427,7 +427,8 @@ static const void *kStatusBarStyle = &kStatusBarStyle;
            (int)[[UIScreen mainScreen] nativeBounds].size.height==2436 || 
            (int)[[UIScreen mainScreen] nativeBounds].size.height==2688) {
             return true;
-        }
+        } else {
+            return false;
     }
 }
 
@@ -467,9 +468,9 @@ static const void *kStatusBarStyle = &kStatusBarStyle;
         }
     }
  
-//     if ([self isIphoneX]) {
-//         frame.size.height += self.webView.safeAreaInsets.bottom; 
-//     }
+    if ([self isIphoneX]) {
+        frame.size.height += self.webView.safeAreaInsets.bottom; 
+    }
  
     frame.size.height -= frame.origin.y;
     self.webView.frame = frame;
