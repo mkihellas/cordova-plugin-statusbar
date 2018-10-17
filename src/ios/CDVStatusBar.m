@@ -429,6 +429,7 @@ static const void *kStatusBarStyle = &kStatusBarStyle;
             return true;
         } else {
             return false;
+        }
     }
 }
 
